@@ -10,6 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const R = require('./lib/render.js');
 const EP = require('./lib/episodes.js');
+const AR = require('./lib/archive.js');
 
 const ROOT = __dirname;
 const SITE_URL = 'https://uncomfy.org/';
@@ -44,6 +45,23 @@ async function getEpisodes() {
     console.log(`episodes: YouTube unavailable (${e.message}), using ${saved.length} saved`);
     return saved;
   }
+}
+
+// every episode for the search box, from the podcast RSS feed (YouTube's feed only has the newest 15)
+async function getArchive() {
+  const cache = path.join(ROOT, 'data/archive.json');
+  let list = [];
+  try {
+    list = await AR.fetchArchive(S.podcastFeed, { timeout: 15000 });
+    fs.writeFileSync(cache, JSON.stringify({ checked: new Date().toISOString(), episodes: list }) + '\n');
+    console.log(`archive: ${list.length} episodes from the podcast feed`);
+  } catch (e) {
+    list = fs.existsSync(cache) ? JSON.parse(fs.readFileSync(cache, 'utf8')).episodes || [] : [];
+    console.log(`archive: podcast feed unavailable (${e.message}), using ${list.length} saved`);
+  }
+  // public copy the page falls back to if /api/archive is ever down
+  fs.writeFileSync(path.join(ROOT, 'archive.json'), JSON.stringify({ checked: new Date().toISOString(), episodes: list }));
+  return list;
 }
 
 // ---------- pieces ----------
@@ -101,7 +119,7 @@ const bigMarquee = Array(2).fill(`<span>Get uncomfortable</span><i>&#10038;</i><
 
 // ---------- render ----------
 (async () => {
-  const eps = await getEpisodes();
+  const [eps] = await Promise.all([getEpisodes(), getArchive()]);
   const now = new Date().toISOString();
   const L = c.latest;
   const youtube = esc(S.youtube);
@@ -121,8 +139,13 @@ const bigMarquee = Array(2).fill(`<span>Get uncomfortable</span><i>&#10038;</i><
     labels: { label: L.label, newLabel: L.newLabel, newDays: +L.newDays || 7, playLabel: L.playLabel },
     countText: L.countText,
     count: +c.episodes.count || 6,
-    newest: eps[0] ? eps[0].id : ''
+    newest: eps[0] ? eps[0].id : '',
+    // episode number -> YouTube video, so search results for recent episodes play right on the page
+    yt: Object.fromEntries(eps.filter(e => e.number).map(e => [e.number, e.id]))
   };
+  const E = c.episodes;
+  const topicChips = (E.topics || []).filter(t => t && t.label).map(t =>
+    `<button class="es-chip" type="button" data-words="${esc(t.words || t.label)}" aria-pressed="false">${esc(t.label)}</button>`).join('');
 
   const vars = {
     title: esc(S.seoTitle), description: esc(S.seoDescription), url: SITE_URL, showName: esc(S.showName),
@@ -139,6 +162,8 @@ const bigMarquee = Array(2).fill(`<span>Get uncomfortable</span><i>&#10038;</i><
     'directions.eyebrow': esc(c.directions.eyebrow), 'directions.heading': fmt(c.directions.heading), 'directions.text': fmt(c.directions.text), directionCards,
     'episodes.eyebrow': esc(c.episodes.eyebrow), 'episodes.heading': fmt(c.episodes.heading), 'episodes.text': fmt(c.episodes.text), 'episodes.buttonLabel': esc(c.episodes.buttonLabel), 'episodes.count': esc(config.count),
     grid: R.grid(eps, config.count),
+    'episodes.searchLabel': esc(E.searchLabel), 'episodes.searchPlaceholder': esc(E.searchPlaceholder), 'episodes.topicsLabel': esc(E.topicsLabel),
+    'episodes.noResults': fmt(E.noResults), 'episodes.suggestLabel': esc(E.suggestLabel), topicChips,
     'hosts.eyebrow': esc(c.hosts.eyebrow), 'hosts.heading': fmt(c.hosts.heading), 'hosts.text': fmt(c.hosts.text), hostCards,
     'listen.heading': fmt(c.listen.heading), 'listen.text': fmt(c.listen.text), bigMarquee,
     'listen.voicemailKicker': esc(c.listen.voicemailKicker), 'listen.voicemailText': fmt(c.listen.voicemailText), 'listen.followKicker': esc(c.listen.followKicker), 'listen.followText': fmt(c.listen.followText), 'listen.reviewKicker': esc(c.listen.reviewKicker), 'listen.reviewText': fmt(c.listen.reviewText),
@@ -159,8 +184,8 @@ const bigMarquee = Array(2).fill(`<span>Get uncomfortable</span><i>&#10038;</i><
   fs.mkdirSync(path.join(ROOT, 'thanks'), { recursive: true });
   fs.writeFileSync(path.join(ROOT, 'thanks/index.html'), `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thank you | ${esc(S.showName)}</title><meta name="robots" content="noindex"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://use.typekit.net/ohw6ayv.css"><link rel="stylesheet" href="https://use.typekit.net/dyw0udq.css"><link rel="stylesheet" href="/styles.css?v=${vars.version}"></head><body class="thanks-page"><main class="wrap"><a class="brand" href="/"><span class="un">un</span>COMFORTABLE</a><h1>${tie(esc(c.ask.thanksHeading))}</h1><p>${fmt(c.ask.thanksText)}</p><a class="btn" href="/">Back to the podcast</a></main></body></html>\n`);
 
-  // front-end script = shared episode renderer + page behavior
-  fs.writeFileSync(path.join(ROOT, 'site.js'), fs.readFileSync(path.join(ROOT, 'lib/render.js'), 'utf8') + '\n' + fs.readFileSync(path.join(ROOT, 'src/site.js'), 'utf8'));
+  // front-end script = shared episode renderer + episode search + page behavior
+  fs.writeFileSync(path.join(ROOT, 'site.js'), ['lib/render.js', 'lib/search.js', 'src/site.js'].map(f => fs.readFileSync(path.join(ROOT, f), 'utf8')).join('\n'));
   fs.copyFileSync(path.join(ROOT, 'src/styles.css'), path.join(ROOT, 'styles.css'));
   console.log('built index.html');
 })().catch(e => { console.error(e); process.exit(1); });

@@ -116,7 +116,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 .latest-sum{font-size:16px;line-height:1.45;color:rgba(0,0,61,.75);margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .latest-date{font-size:14px;font-weight:700;color:rgba(0,0,61,.55);margin:0}
 .latest-card.empty{padding:28px}
-.drop-badge{position:absolute;top:-34px;right:-26px;width:112px;height:112px;z-index:3;border-radius:50%;background:var(--magenta);color:var(--cream);display:grid;place-items:center;transform:rotate(12deg);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.drop-badge{position:absolute;top:-72px;right:-52px;width:112px;height:112px;z-index:3;border-radius:50%;background:var(--magenta);color:var(--cream);display:grid;place-items:center;transform:rotate(12deg);box-shadow:0 10px 30px rgba(0,0,0,.35)}
 .drop-badge svg{width:100%;height:100%;animation:spin 12s linear infinite}
 .drop-badge text{font:900 11px var(--sans);letter-spacing:0;fill:var(--cream);text-transform:uppercase}
 .drop-badge::after{content:"";position:absolute;width:30px;height:30px;border-radius:50%;background:var(--orange)}
@@ -131,7 +131,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
   .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:'head' 'ep' 'body'}
   .hero-ep{max-width:620px;margin:16px auto 92px;width:100%}
   .sticker{left:-6px;bottom:-90px;width:104px;height:104px}
-  .drop-badge{right:-6px;top:-40px;width:92px;height:92px}
+  .drop-badge{right:-14px;top:-58px;width:92px;height:92px}
 }
 
 /* ---------- ticker ---------- */

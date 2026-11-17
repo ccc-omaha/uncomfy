@@ -5,7 +5,7 @@
   var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   // keep the last two words together so a title never ends on one orphaned word
-  function tie(s) { return String(s).replace(/ ([^\s<>]{1,14})$/, '&nbsp;$1'); }
+  function tie(s) { return String(s).replace(/(\S+) ([^\s<>]{1,14})$/, function (m, a, b) { return (a + b).length <= 18 ? a + '&nbsp;' + b : m; }); }
   function day(iso) {
     var d = new Date(iso);
     if (isNaN(d)) return null;
@@ -36,7 +36,7 @@
     var isNew = fresh !== null && fresh <= (+L.newDays || 7);
     return '' +
       '<article class="latest-card" data-id="' + esc(e.id) + '">' +
-        (isNew ? '<span class="drop-badge" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="dropc" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><text><textPath href="#dropc">' + esc(L.newLabel) + ' &#10038; ' + esc(L.newLabel) + ' &#10038; </textPath></text></svg></span>' : '') +
+        (isNew ? '<span class="drop-badge" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="dropc" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><text><textPath href="#dropc" textLength="276" lengthAdjust="spacing">' + esc(L.newLabel) + ' &#10038; ' + esc(L.newLabel) + ' &#10038;&#160;</textPath></text></svg></span>' : '') +
         '<button class="thumb" type="button" data-video="' + esc(e.id) + '" data-title="' + esc(e.title) + '" aria-label="' + esc(L.playLabel) + ': ' + esc(e.title) + '">' +
           '<img src="' + esc(e.thumbHd) + '" data-fallback="' + esc(e.thumb) + '" alt="" width="1280" height="720" fetchpriority="high">' +
           '<span class="play-btn">' + play() + '<span>' + esc(L.playLabel) + '</span></span>' +

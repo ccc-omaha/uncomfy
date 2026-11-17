@@ -118,19 +118,19 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 .latest-card.empty{padding:28px}
 .drop-badge{position:absolute;top:-34px;right:-26px;width:112px;height:112px;z-index:3;border-radius:50%;background:var(--magenta);color:var(--cream);display:grid;place-items:center;transform:rotate(12deg);box-shadow:0 10px 30px rgba(0,0,0,.35)}
 .drop-badge svg{width:100%;height:100%;animation:spin 12s linear infinite}
-.drop-badge text{font:900 12.5px var(--sans);letter-spacing:.18em;fill:var(--cream);text-transform:uppercase}
+.drop-badge text{font:900 11px var(--sans);letter-spacing:0;fill:var(--cream);text-transform:uppercase}
 .drop-badge::after{content:"";position:absolute;width:30px;height:30px;border-radius:50%;background:var(--orange)}
 @keyframes spin{to{transform:rotate(360deg)}}
-.sticker{position:absolute;left:-58px;bottom:-54px;z-index:2;width:128px;height:128px;border-radius:50%;background:var(--orange);color:var(--navy);display:grid;place-items:center;transform:rotate(-14deg);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.sticker{position:absolute;left:-52px;top:-48px;z-index:2;width:128px;height:128px;border-radius:50%;background:var(--orange);color:var(--navy);display:grid;place-items:center;transform:rotate(-14deg);box-shadow:0 12px 30px rgba(0,0,0,.35)}
 .sticker svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 16s linear infinite reverse}
-.sticker text{font:900 11px var(--sans);letter-spacing:.2em;fill:var(--navy)}
+.sticker text{font:900 10px var(--sans);letter-spacing:0;fill:var(--navy)}
 .sticker span{font-size:42px;line-height:1;animation:wobble 2.4s ease-in-out infinite}
 @keyframes wobble{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
 .nojs{color:var(--cream)}
 @media (max-width:960px){
   .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:'head' 'ep' 'body'}
   .hero-ep{max-width:620px;margin:16px auto 64px;width:100%}
-  .sticker{left:auto;right:-8px;bottom:-60px;width:104px;height:104px}
+  .sticker{left:-10px;top:-44px;width:104px;height:104px}
   .drop-badge{right:-6px;top:-40px;width:92px;height:92px}
 }
 
@@ -228,7 +228,8 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 .ask::before{content:"?";position:absolute;right:-2vw;top:-8vw;font-weight:900;font-size:clamp(300px,42vw,620px);line-height:1;color:rgba(0,0,61,.08);transform:rotate(14deg);animation:wobble 7s ease-in-out infinite;pointer-events:none}
 .ask-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,70px);align-items:start;position:relative}
 .ask .eyebrow{color:var(--navy);opacity:.7}
-.ask h2{font-size:clamp(36px,4.2vw,62px);overflow-wrap:break-word}
+.ask-copy{container-type:inline-size}
+.ask h2{font-size:min(11.5cqi,66px);hyphens:manual}
 .ask .btn{background:var(--navy);color:var(--cream);box-shadow:4px 4px 0 var(--magenta)}
 .ask .btn:hover{box-shadow:6px 6px 0 var(--magenta)}
 .ask-copy p:last-child{font-size:clamp(18px,1.5vw,21px);max-width:40ch}
@@ -238,7 +239,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 .field input,.field textarea{width:100%;font:500 17px/1.4 var(--sans);color:var(--navy);background:var(--cream);border:2px solid var(--navy);border-radius:12px;padding:13px 15px;transition:box-shadow .2s,transform .2s}
 .field textarea{resize:vertical;min-height:120px}
 .field input:focus,.field textarea:focus{outline:none;box-shadow:4px 4px 0 var(--aqua);transform:translate(-2px,-2px)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:end}
 .check{display:flex;gap:10px;align-items:flex-start;font-size:15px;font-weight:600;margin:4px 0 22px;cursor:pointer}
 .check input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--navy);flex:none}
 .fine{font-size:13px;margin:14px 0 0;opacity:.65}

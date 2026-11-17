@@ -19,7 +19,9 @@ const S = c.site;
 
 // ---------- text helpers ----------
 const esc = R.esc;
-const tie = s => String(s).replace(/ ([^\s<>]{1,14}(?:<\/[a-z]+>)*)$/, '&nbsp;$1');
+// keep the last two words together so nothing ends on one orphaned word,
+// unless that pair is too long to fit a narrow column (then let it wrap normally)
+const tie = s => String(s).replace(/(\S+) ([^\s<>]{1,14}(?:<\/[a-z]+>)*)$/, (m, a, b) => (a + b).replace(/<[^>]+>/g, '').length <= 18 ? `${a}&nbsp;${b}` : m);
 const inline = s => esc(s)
   .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
   .replace(/\*(.+?)\*/g, '<em>$1</em>')
@@ -90,7 +92,8 @@ const hostCards = studio + (bios ? `<ul class="bios">${bios}</ul>` : '');
 // the show's spiral mark, one path per ring so each ring can turn on its own
 const RINGS = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/mark.json'), 'utf8'));
 const mark = cls => `<svg class="${cls}" viewBox="${-RINGS.r} ${-RINGS.r} ${RINGS.r * 2} ${RINGS.r * 2}" aria-hidden="true">${RINGS.paths.map((d, i) => `<path class="ring r${i}" d="${d}"/>`).join('')}</svg>`;
-const loop = (s, n) => Array(n).fill(esc(s).toUpperCase()).join(' &#10038; ') + ' &#10038; ';
+// the words that circle the sticker; textLength in the template spaces them evenly around the ring
+const loop = (s, n) => Array(n).fill(esc(s).toUpperCase()).join(' &#10038; ') + ' &#10038;&#160;';
 const bigMarquee = Array(2).fill(`<span>Get uncomfortable</span><i>&#10038;</i><span>Faith worth questioning</span><i>&#10038;</i><span>Conversations worth having</span><i>&#10038;</i>`).join('');
 
 // ---------- render ----------

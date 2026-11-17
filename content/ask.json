@@ -5,7 +5,7 @@
   "questionLabel": "Your question",
   "questionPlaceholder": "The thing you've always wondered but never said out loud",
   "nameLabel": "First name (optional)",
-  "emailLabel": "Email (optional, only if you want a reply)",
+  "emailLabel": "Email (only if you want a reply)",
   "anonymousLabel": "Keep me anonymous if this comes up on the show",
   "buttonLabel": "Send it",
   "thanksHeading": "Got it. Thank you.",

@@ -7,6 +7,7 @@
 import { getStore } from '@netlify/blobs';
 import lib from '../../lib/archive.js';
 import site from '../../content/site.json';
+import videos from '../../data/youtube-videos.json';
 
 const reply = (body, cdnSeconds) => new Response(JSON.stringify(body), {
   headers: {
@@ -18,9 +19,13 @@ const reply = (body, cdnSeconds) => new Response(JSON.stringify(body), {
 
 export default async () => {
   let store = null;
-  try { store = getStore('uncomfy-archive'); } catch { /* Blobs unavailable locally */ }
+  let seen = null;
   try {
-    const episodes = await lib.fetchArchive(site.podcastFeed);
+    store = getStore('uncomfy-archive');
+    seen = await getStore('uncomfy-episodes').get('videos', { type: 'json' }).catch(() => null);
+  } catch { /* Blobs unavailable locally */ }
+  try {
+    const episodes = lib.attachVideos(await lib.fetchArchive(site.podcastFeed), [videos, seen]);
     const body = { checked: new Date().toISOString(), episodes };
     if (store) await store.setJSON('all', body).catch(() => {});
     return reply(body, 3600);

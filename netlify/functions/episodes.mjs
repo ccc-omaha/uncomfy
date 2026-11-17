@@ -27,7 +27,15 @@ export default async (req) => {
   try {
     const episodes = (await lib.fetchEpisodes(id)).slice(0, 15);
     const body = { checked: new Date().toISOString(), source: 'youtube', episodes };
-    if (store) await store.setJSON(id, body).catch(() => {});
+    if (store) {
+      await store.setJSON(id, body).catch(() => {});
+      // remember every upload's video ID by episode number, so search can link
+      // straight to it long after it drops out of YouTube's newest-15 feed
+      const seen = (await store.get('videos', { type: 'json' }).catch(() => null)) || { byNumber: {} };
+      let added = false;
+      episodes.forEach(e => { if (e.number && seen.byNumber[e.number] !== e.id) { seen.byNumber[e.number] = e.id; added = true; } });
+      if (added) await store.setJSON('videos', seen).catch(() => {});
+    }
     return reply(body, 300);
   } catch (err) {
     const last = store ? await store.get(id, { type: 'json' }).catch(() => null) : null;

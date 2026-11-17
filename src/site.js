@@ -84,7 +84,7 @@
 
     var ytSearch = function (e) { return 'https://www.youtube.com/results?search_query=' + encodeURIComponent('unCOMFORTABLE Podcast ' + (e.n || '') + ' ' + e.t); };
     var item = function (e) {
-      var vid = e.n && cfg.yt && cfg.yt[e.n];
+      var vid = e.v || (e.n && cfg.yt && cfg.yt[e.n]);
       return '<li class="es-item">' +
         '<div class="es-main">' +
           '<p class="es-meta">' + (e.n ? '<span class="ep-num">Ep. ' + R.esc(e.n) + '</span>' : '') + (e.d ? '<time datetime="' + R.esc(e.d) + '">' + R.esc(R.longDate(e.d)) + '</time>' : '') + '</p>' +

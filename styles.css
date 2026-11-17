@@ -102,7 +102,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 .thumb{position:relative;display:block;width:100%;padding:0;border:0;cursor:pointer;border-radius:14px;overflow:hidden;background:var(--navy);aspect-ratio:16/9}
 .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease),filter .4s}
 .thumb:hover img{transform:scale(1.05);filter:saturate(1.15)}
-.play-btn{position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--cream);font:800 15px/1 var(--sans);padding:10px 18px 10px 10px;border-radius:999px;transition:transform .3s var(--bounce),background .2s}
+.play-btn{position:absolute;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--cream);font:800 15px/1 var(--sans);padding:10px 18px 10px 10px;border-radius:999px;transition:transform .3s var(--bounce),background .2s}
 .play-btn .play{width:34px;height:34px;padding:8px;border-radius:50%;background:var(--aqua);fill:var(--navy)}
 .thumb:hover .play-btn{transform:scale(1.06);background:var(--magenta)}
 .latest-meta{padding:18px 8px 0}

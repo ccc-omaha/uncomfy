@@ -35,6 +35,7 @@
   <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 2.6l2.6-.4 2 4.6-2 1.6a12.6 12.6 0 0 0 6.4 6.4l1.6-2 4.6 2-.4 2.6a2.6 2.6 0 0 1-2.6 2.2C10.3 19.6 4.4 13.7 4.4 5.2a2.6 2.6 0 0 1 2.2-2.6z"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></g></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
 </svg>
 
@@ -115,6 +116,19 @@
         <p>{{episodes.text}}</p>
       </div>
       <a class="btn ghost" href="{{youtube}}" target="_blank" rel="noopener">{{episodes.buttonLabel}} <svg class="i"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="ep-search reveal" data-search hidden>
+      <label class="es-label" for="es-q">{{episodes.searchLabel}}<span class="es-count" data-es-count></span></label>
+      <div class="es-box">
+        <svg class="i es-icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <input id="es-q" type="search" placeholder="{{episodes.searchPlaceholder}}" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-describedby="es-status">
+        <button class="es-clear" type="button" aria-label="Clear search" hidden><svg class="i"><use href="#i-x"/></svg></button>
+      </div>
+      <div class="es-topics" role="group" aria-label="{{episodes.topicsLabel}}"><span class="es-topics-label">{{episodes.topicsLabel}}</span>{{topicChips}}</div>
+      <p class="es-status" id="es-status" aria-live="polite" data-es-status></p>
+      <ol class="es-results" data-es-results></ol>
+      <button class="btn ghost es-more" type="button" hidden>Show more</button>
+      <div class="es-none" hidden><p>{{episodes.noResults}}</p><a class="btn" href="#ask" data-suggest>{{episodes.suggestLabel}} <svg class="i"><use href="#i-arrow"/></svg></a></div>
     </div>
     <ul class="ep-grid" data-grid data-count="{{episodes.count}}">{{grid}}</ul>
   </div>

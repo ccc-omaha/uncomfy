@@ -1,7 +1,46 @@
 {
   "eyebrow": "Back catalog",
   "heading": "More conversations",
-  "text": "Catch up on recent episodes, or dig through the whole archive on YouTube.",
+  "text": "Catch up on recent episodes, or search every conversation we've had.",
   "count": "6",
-  "buttonLabel": "See every episode"
+  "buttonLabel": "See every episode",
+  "searchLabel": "Search every episode",
+  "searchPlaceholder": "Try a topic, a guest, or an episode number",
+  "topicsLabel": "Popular topics",
+  "topics": [
+    {
+      "label": "Mental health",
+      "words": "mental health, anxiety, depression, therapy, burnout"
+    },
+    {
+      "label": "Sex & gender",
+      "words": "sex, sexuality, sexual, gender, lgbtq, gay, transgender, porn"
+    },
+    {
+      "label": "Grief & suffering",
+      "words": "grief, grieving, loss, death, suffering, cancer, illness, chronic"
+    },
+    {
+      "label": "Dating & marriage",
+      "words": "dating, single, singleness, marriage, married, divorce"
+    },
+    {
+      "label": "Politics",
+      "words": "politics, political, election, immigration, government, nationalism"
+    },
+    {
+      "label": "Money",
+      "words": "money, wealth, debt, generosity, finance, consumerism, materialism"
+    },
+    {
+      "label": "Parenting",
+      "words": "parenting, parents, kids, teen, teens"
+    },
+    {
+      "label": "Doubt & church hurt",
+      "words": "doubt, doubts, deconstruction, deconstruct, church hurt, religious trauma, spiritual abuse"
+    }
+  ],
+  "noResults": "We haven't covered that yet. Want us to?",
+  "suggestLabel": "Suggest it as a topic"
 }

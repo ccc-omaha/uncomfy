@@ -1,4 +1,10 @@
 {
   "heading": "Get comfortable being uncomfortable.",
-  "text": "Follow the show wherever you listen so you never miss an episode."
+  "text": "Follow the show wherever you listen so you never miss an episode.",
+  "voicemailKicker": "Leave a voicemail",
+  "voicemailText": "Ask a question, pitch a topic, or tell us where we got it wrong. Your voice might end up on the show.",
+  "followKicker": "Follow along",
+  "followText": "Clips, behind the scenes, and the conversations that keep going after we stop recording.",
+  "reviewKicker": "Rate and review",
+  "reviewText": "Leave us a rating on Apple Podcasts or Spotify, or wherever you listen. It helps people find the show."
 }

@@ -50,6 +50,9 @@ async function getEpisodes() {
 const PLATFORMS = [['youtube', 'YouTube', 'yt'], ['spotify', 'Spotify', 'spotify'], ['apple', 'Apple Podcasts', 'apple']];
 const listenButtons = PLATFORMS.filter(([k]) => S[k]).map(([k, label, ic]) =>
   `<a class="pill p-${k}" href="${esc(S[k])}" target="_blank" rel="noopener"><svg class="i"><use href="#i-${ic}"/></svg><span>${label}</span></a>`).join('');
+// voicemail number as a tap-to-call link (calculated, never typed twice)
+const tel = p => 'tel:+1' + String(p || '').replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '');
+const reviewLinks = [['apple', 'Apple Podcasts'], ['spotify', 'Spotify']].filter(([k]) => S[k]).map(([k, label]) => `<a href="${esc(S[k])}" target="_blank" rel="noopener">${label}</a>`).join('');
 const listenBig = PLATFORMS.filter(([k]) => S[k]).map(([k, label, ic]) =>
   `<a class="plat p-${k}" href="${esc(S[k])}" target="_blank" rel="noopener"><svg class="i"><use href="#i-${ic}"/></svg><span><small>Listen on</small>${label}</span><svg class="i go"><use href="#i-arrow"/></svg></a>`).join('');
 
@@ -124,6 +127,7 @@ const bigMarquee = Array(2).fill(`<span>Get uncomfortable</span><i>&#10038;</i><
   const vars = {
     title: esc(S.seoTitle), description: esc(S.seoDescription), url: SITE_URL, showName: esc(S.showName),
     subtitle: tie(esc(S.subtitle)), youtube, churchUrl: esc(S.churchUrl), churchName: esc(S.churchName), instagram: esc(S.instagram),
+    tiktok: esc(S.tiktok), handle: esc(S.handle), voicemail: esc(S.voicemail), telHref: tel(S.voicemail), reviewLinks,
     footerText: fmt(S.footerText),
     'hero.eyebrow': esc(c.hero.eyebrow), 'hero.tagline': fmt(c.hero.tagline), 'hero.intro': fmt(c.hero.intro), 'hero.listenLabel': esc(c.hero.listenLabel),
     stickerLoop: loop(c.hero.stickerText, 2),
@@ -137,6 +141,7 @@ const bigMarquee = Array(2).fill(`<span>Get uncomfortable</span><i>&#10038;</i><
     grid: R.grid(eps, config.count),
     'hosts.eyebrow': esc(c.hosts.eyebrow), 'hosts.heading': fmt(c.hosts.heading), 'hosts.text': fmt(c.hosts.text), hostCards,
     'listen.heading': fmt(c.listen.heading), 'listen.text': fmt(c.listen.text), bigMarquee,
+    'listen.voicemailKicker': esc(c.listen.voicemailKicker), 'listen.voicemailText': fmt(c.listen.voicemailText), 'listen.followKicker': esc(c.listen.followKicker), 'listen.followText': fmt(c.listen.followText), 'listen.reviewKicker': esc(c.listen.reviewKicker), 'listen.reviewText': fmt(c.listen.reviewText),
     schema: `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>`,
     config: JSON.stringify(config).replace(/</g, '\\u003c'),
     version: Date.now().toString(36)

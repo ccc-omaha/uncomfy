@@ -38,8 +38,11 @@ content:
       - {name: seoDescription, label: Google and link preview description, type: text, description: "Not shown on the page. The short description under the title in Google and in text or social link previews."}
       - {name: youtube, label: YouTube playlist link, type: string, description: "Paste the full playlist link. Powers the YouTube buttons AND tells the site where to find new episodes. Only change this if the show moves to a new playlist."}
       - {name: spotify, label: Spotify link, type: string, description: "The Spotify buttons at the top and bottom of the page. Leave blank to hide them."}
-      - {name: apple, label: Apple Podcasts link, type: string, description: "The Apple Podcasts buttons at the top and bottom of the page. Leave blank to hide them."}
-      - {name: instagram, label: Instagram link, type: string, description: "The Instagram link at the bottom right of the footer."}
+      - {name: apple, label: Apple Podcasts link, type: string, description: "The Apple Podcasts buttons at the top and bottom of the page, and the Apple Podcasts button on the orange Rate and review card. Leave blank to hide them."}
+      - {name: handle, label: Social handle, type: string, description: "The big handle on the pink Follow along card near the bottom, like @cccomapodcast."}
+      - {name: instagram, label: Instagram link, type: string, description: "The Instagram button on the pink Follow along card, and the Instagram link in the footer."}
+      - {name: tiktok, label: TikTok link, type: string, description: "The TikTok button on the pink Follow along card, and the TikTok link in the footer."}
+      - {name: voicemail, label: Voicemail number, type: string, description: "The phone number on the aqua voicemail card near the bottom and under the Ask us heading. Tapping it calls the number on phones."}
       - {name: churchName, label: Church name, type: string, description: "The church link at the bottom right of the footer."}
       - {name: churchUrl, label: Church website, type: string, description: "Where the church link in the footer goes."}
       - {name: footerText, label: Footer sentence, type: string, description: "The sentence next to the logo in the footer at the very bottom."}
@@ -172,6 +175,7 @@ content:
       - {name: eyebrow, label: Small label, type: string, description: "The small all-caps line above the heading on the orange background."}
       - {name: heading, label: Heading, type: string, description: "The big navy heading on the orange background."}
       - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading."}
+      - {name: voicemailText, label: Voicemail line, type: string, description: "The line with the phone icon under the intro paragraph. The voicemail number from section 1 is added at the end."}
       - {name: questionLabel, label: Question box label, type: string, description: "The bold label above the big question box in the form."}
       - {name: questionPlaceholder, label: Question box hint, type: string, description: "The light gray hint inside the empty question box."}
       - {name: nameLabel, label: Name box label, type: string, description: "The label above the name box."}
@@ -184,10 +188,16 @@ content:
 
   # ---------------------------------------------------------------
   - name: listen
-    label: "10. Bottom: listen everywhere"
+    label: "10. Bottom: listen, voicemail, follow, review"
     type: file
     path: content/listen.json
     format: json
     fields:
       - {name: heading, label: Heading, type: string, description: "The big white heading under the giant scrolling words near the bottom."}
       - {name: text, label: Sentence, type: text, description: "The sentence above the three big YouTube, Spotify, and Apple Podcasts buttons."}
+      - {name: voicemailKicker, label: Voicemail card label, type: string, description: "The small all-caps line on the aqua card above the phone number."}
+      - {name: voicemailText, label: Voicemail card sentence, type: text, description: "The sentence under the phone number on the aqua card."}
+      - {name: followKicker, label: Follow card label, type: string, description: "The small all-caps line on the pink card above the social handle."}
+      - {name: followText, label: Follow card sentence, type: text, description: "The sentence under the handle on the pink card."}
+      - {name: reviewKicker, label: Review card label, type: string, description: "The small all-caps line on the orange card under the stars."}
+      - {name: reviewText, label: Review card sentence, type: text, description: "The sentence on the orange card above the Apple Podcasts and Spotify buttons."}

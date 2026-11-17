@@ -243,6 +243,13 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 .es-none{margin-top:6px}
 .es-none p{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.2vw,28px);margin:0 0 18px}
 @media (max-width:1100px){.es-chips{margin-right:calc(-1 * clamp(20px,4vw,40px));padding-right:clamp(20px,4vw,40px);-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}}
+/* phones: while typing a search, results start right under the box; the comfort meter steps aside */
+@media (max-width:760px){
+  .ep-search.typed .es-topics{display:none}
+  .ep-search.typed .es-status{margin-top:18px}
+  body.es-focus .meter{opacity:0}
+  .es-results{scroll-margin-top:90px}
+}
 @media (max-width:700px){.es-item{grid-template-columns:1fr;padding:18px}.es-box input{padding:17px 54px 17px 54px}.es-icon{left:20px;width:22px;height:22px}}
 @media (max-width:960px){.ep-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:600px){.ep-grid{grid-template-columns:1fr}}

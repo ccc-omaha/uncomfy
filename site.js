@@ -285,6 +285,16 @@
       more.textContent = 'Show more (' + (found.length - shown) + ' left)';
     };
     var plural = function (n) { return n + (n === 1 ? ' episode' : ' episodes'); };
+    // phones: keep the box at the top of the screen so results show above the keyboard
+    var phone = window.matchMedia('(max-width: 760px)');
+    var header = document.querySelector('.site-header');
+    var lift = function (el, smooth) {
+      if (!phone.matches || !el) return;
+      var top = el.getBoundingClientRect().top + window.pageYOffset - (header ? header.offsetHeight : 0) - 12;
+      window.scrollTo({ top: Math.max(0, top), behavior: smooth && !reduce ? 'smooth' : 'auto' });
+    };
+    var typing = function () { sBox.classList.toggle('typed', !!qIn.value.trim()); };
+
     var reset = function () {
       sBox.classList.remove('searching');
       list.innerHTML = ''; statusEl.textContent = ''; more.hidden = true; none.hidden = true; clr.hidden = !qIn.value;
@@ -322,22 +332,33 @@
     var unchip = function () { chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); }); };
 
     qIn.addEventListener('input', function () {
-      unchip();
+      unchip(); typing();
       clearTimeout(timer);
       timer = setTimeout(function () { run(qIn.value); }, 180);
     });
-    qIn.addEventListener('focus', function () { load().catch(function () {}); });
-    qIn.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') { qIn.value = ''; unchip(); run(''); }
-      if (e.key === 'Enter') { e.preventDefault(); clearTimeout(timer); run(qIn.value); }
+    qIn.addEventListener('focus', function () {
+      load().catch(function () {});
+      document.body.classList.add('es-focus');
+      // iOS scrolls the field into view on its own first; move it after that settles
+      if (phone.matches) setTimeout(function () { lift(qIn.parentNode); }, 320);
     });
-    clr.addEventListener('click', function () { qIn.value = ''; unchip(); run(''); qIn.focus(); });
+    qIn.addEventListener('blur', function () { document.body.classList.remove('es-focus'); });
+    qIn.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { qIn.value = ''; unchip(); typing(); run(''); }
+      if (e.key === 'Enter') {
+        e.preventDefault(); clearTimeout(timer); run(qIn.value);
+        // tapping Search on a phone closes the keyboard and shows the results
+        if (phone.matches) { qIn.blur(); setTimeout(function () { lift(statusEl, true); }, 120); }
+      }
+    });
+    clr.addEventListener('click', function () { qIn.value = ''; unchip(); typing(); run(''); qIn.focus(); });
     more.addEventListener('click', page);
     chips.forEach(function (c) {
       c.addEventListener('click', function () {
         var on = c.getAttribute('aria-pressed') !== 'true';
         unchip(); qIn.value = ''; clr.hidden = true;
-        if (on) { c.setAttribute('aria-pressed', 'true'); run(c.textContent, c); } else run('');
+        typing();
+        if (on) { c.setAttribute('aria-pressed', 'true'); run(c.textContent, c); setTimeout(function () { lift(c.closest('.es-topics'), true); }, 150); } else run('');
       });
     });
     // "Suggest it as a topic": carry the search into the question form
@@ -353,7 +374,7 @@
       var params = new URL(location.href).searchParams, pq = params.get('q'), pt = params.get('topic');
       var pc = pt && chips.filter(function (c) { return c.textContent.toLowerCase() === pt.toLowerCase(); })[0];
       if (pc) { pc.setAttribute('aria-pressed', 'true'); run(pc.textContent, pc); }
-      else if (pq) { qIn.value = pq; run(pq); }
+      else if (pq) { qIn.value = pq; typing(); run(pq); }
     } catch (e) {}
   }
 

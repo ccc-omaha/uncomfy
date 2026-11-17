@@ -121,7 +121,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 .drop-badge text{font:900 11px var(--sans);letter-spacing:0;fill:var(--cream);text-transform:uppercase}
 .drop-badge::after{content:"";position:absolute;width:30px;height:30px;border-radius:50%;background:var(--orange)}
 @keyframes spin{to{transform:rotate(360deg)}}
-.sticker{position:absolute;left:-52px;top:-48px;z-index:2;width:128px;height:128px;border-radius:50%;background:var(--orange);color:var(--navy);display:grid;place-items:center;transform:rotate(-14deg);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.sticker{position:absolute;left:-84px;bottom:-90px;z-index:2;width:128px;height:128px;border-radius:50%;background:var(--orange);color:var(--navy);display:grid;place-items:center;transform:rotate(-14deg);box-shadow:0 12px 30px rgba(0,0,0,.35)}
 .sticker svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 16s linear infinite reverse}
 .sticker text{font:900 10px var(--sans);letter-spacing:0;fill:var(--navy)}
 .sticker span{font-size:42px;line-height:1;animation:wobble 2.4s ease-in-out infinite}
@@ -129,8 +129,8 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 .nojs{color:var(--cream)}
 @media (max-width:960px){
   .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:'head' 'ep' 'body'}
-  .hero-ep{max-width:620px;margin:16px auto 64px;width:100%}
-  .sticker{left:-10px;top:-44px;width:104px;height:104px}
+  .hero-ep{max-width:620px;margin:16px auto 92px;width:100%}
+  .sticker{left:-6px;bottom:-90px;width:104px;height:104px}
   .drop-badge{right:-6px;top:-40px;width:92px;height:92px}
 }
 

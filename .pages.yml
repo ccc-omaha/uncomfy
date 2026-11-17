@@ -22,7 +22,7 @@ components:
   color:
     type: select
     options:
-      values: [Teal, Sun, Coral, Orange, Blue, Plum, Pink, Mint, Cream, Navy]
+      values: [Aqua, Orange, Magenta, Blue, Purple, Pink, Mint, Cream, Navy]
 
 content:
   # ---------------------------------------------------------------

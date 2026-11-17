@@ -7,4 +7,4 @@ Site for **unCOMFORTABLE: Conversations About Culture & Christianity**, the podc
 - **Build:** `node build.js` renders `index.html` from `src/template.html` + `content/*.json`, bakes in the current episodes, and writes `site.js` and `styles.css`. Netlify runs it on every deploy. Don't hand-edit the generated files.
 - **Question form:** Netlify Forms (`question`). Set notifications in Netlify under Forms > Form notifications.
 - **Short links:** `/youtube`, `/spotify`, `/apple`, `/ask` (see `netlify.toml`).
-- **Brand:** Proxima Nova and Quincy CF via CCC's Adobe Fonts kits, CCC Navy and Cream with the show's own stripe colors. The spiral mark in `images/` and `src/mark.json` was traced from the show's screen logo.
+- **Brand:** Proxima Nova and Quincy CF via CCC's Adobe Fonts kits. Current CCC brand colors only: Navy, Cream, Blue, Purple, Magenta, Orange, Light Pink, Mint, Aqua. The spiral mark in `images/` and `src/mark.json` was traced from the show's screen logo.

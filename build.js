@@ -25,7 +25,7 @@ const inline = s => esc(s)
   .replace(/\*(.+?)\*/g, '<em>$1</em>')
   .replace(/\[(.+?)\]\(((?:https?:\/\/|mailto:|\/|#)[^\s)]*)\)/g, (m, t, u) => `<a href="${u}"${/^https?:/.test(u) ? ' target="_blank" rel="noopener"' : ''}>${t}</a>`);
 const fmt = s => tie(inline(s));
-const COLORS = { Teal: 'aqua', Aqua: 'aqua', Blue: 'blue', Orange: 'orange', Coral: 'coral', Magenta: 'coral', Sun: 'sun', Yellow: 'sun', Plum: 'purple', Purple: 'purple', Navy: 'navy', Cream: 'cream', Pink: 'pink', Mint: 'mint' };
+const COLORS = { Aqua: 'aqua', Blue: 'blue', Orange: 'orange', Magenta: 'magenta', Purple: 'purple', Pink: 'pink', Mint: 'mint', Cream: 'cream', Navy: 'navy' };
 const color = n => 'c-' + (COLORS[n] || 'aqua');
 
 // ---------- episodes ----------

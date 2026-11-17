@@ -10,21 +10,21 @@
       "role": "Host",
       "spot": "Left",
       "bio": "",
-      "color": "Sun"
+      "color": "Orange"
     },
     {
       "name": "Alex",
       "role": "Host",
       "spot": "Middle",
       "bio": "",
-      "color": "Teal"
+      "color": "Aqua"
     },
     {
       "name": "Jess",
       "role": "Host",
       "spot": "Right",
       "bio": "",
-      "color": "Coral"
+      "color": "Magenta"
     }
   ]
 }

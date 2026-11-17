@@ -48,7 +48,7 @@ async function getEpisodes() {
 }
 
 // every episode for the search box, from the podcast RSS feed (YouTube's feed only has the newest 15)
-async function getArchive() {
+async function getArchive(eps) {
   const cache = path.join(ROOT, 'data/archive.json');
   let list = [];
   try {
@@ -59,6 +59,10 @@ async function getArchive() {
     list = fs.existsSync(cache) ? JSON.parse(fs.readFileSync(cache, 'utf8')).episodes || [] : [];
     console.log(`archive: podcast feed unavailable (${e.message}), using ${list.length} saved`);
   }
+  const videos = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/youtube-videos.json'), 'utf8'));
+  const recent = { byNumber: Object.fromEntries((eps || []).filter(e => e.number).map(e => [e.number, e.id])) };
+  list = AR.attachVideos(list, [videos, recent]);
+  console.log(`archive: ${list.filter(e => e.v).length} of ${list.length} linked to their YouTube video`);
   // public copy the page falls back to if /api/archive is ever down
   fs.writeFileSync(path.join(ROOT, 'archive.json'), JSON.stringify({ checked: new Date().toISOString(), episodes: list }));
   return list;
@@ -119,7 +123,8 @@ const bigMarquee = Array(2).fill(`<span>Get uncomfortable</span><i>&#10038;</i><
 
 // ---------- render ----------
 (async () => {
-  const [eps] = await Promise.all([getEpisodes(), getArchive()]);
+  const eps = await getEpisodes();
+  await getArchive(eps);
   const now = new Date().toISOString();
   const L = c.latest;
   const youtube = esc(S.youtube);

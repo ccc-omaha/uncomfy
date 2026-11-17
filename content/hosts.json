@@ -1,0 +1,30 @@
+{
+  "eyebrow": "Around the table",
+  "heading": "Pull up a chair.",
+  "text": "Three hosts, a lot of honest questions, and guests who are willing to go there.",
+  "photo": "images/studio.jpg",
+  "photoAlt": "The three unCOMFORTABLE hosts talking at the studio table under the neon logo",
+  "hosts": [
+    {
+      "name": "Eric",
+      "role": "Host",
+      "spot": "Left",
+      "bio": "",
+      "color": "Sun"
+    },
+    {
+      "name": "Alex",
+      "role": "Host",
+      "spot": "Middle",
+      "bio": "",
+      "color": "Teal"
+    },
+    {
+      "name": "Jess",
+      "role": "Host",
+      "spot": "Right",
+      "bio": "",
+      "color": "Coral"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "eyebrow": "Your turn",
+  "heading": "Ask us something uncomfortable.",
+  "text": "Got a question you've been afraid to ask at church? Send it. We read every one, and the best ones become episodes.",
+  "questionLabel": "Your question",
+  "questionPlaceholder": "The thing you've always wondered but never said out loud",
+  "nameLabel": "First name (optional)",
+  "emailLabel": "Email (optional, only if you want a reply)",
+  "anonymousLabel": "Keep me anonymous if this comes up on the show",
+  "buttonLabel": "Send it",
+  "thanksHeading": "Got it. Thank you.",
+  "thanksText": "That took guts. Keep listening, it might show up in a future episode.",
+  "privacyNote": "We never share your name or email."
+}

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{url}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{showName}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{url}}">
+<meta property="og:image" content="{{url}}images/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#00003D">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="preconnect" href="https://i.ytimg.com">
+<link rel="stylesheet" href="https://use.typekit.net/ohw6ayv.css">
+<link rel="stylesheet" href="https://use.typekit.net/dyw0udq.css">
+<link rel="stylesheet" href="/styles.css?v={{version}}">
+<script>document.documentElement.classList.replace('no-js','js')</script>
+{{schema}}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15V9l5.8 3z"/></symbol>
+  <symbol id="i-spotify" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22zm5 15.9a.7.7 0 0 1-.9.2c-2.6-1.6-5.9-1.9-9.7-1a.7.7 0 1 1-.3-1.3c4.2-1 7.8-.6 10.7 1.2.3.2.4.6.2.9zm1.4-3a.9.9 0 0 1-1.2.3c-3-1.8-7.4-2.3-10.9-1.3a.9.9 0 1 1-.5-1.7c4-1.2 8.9-.6 12.3 1.5.4.2.5.8.3 1.2zm.1-3.2C14.9 8.6 9 8.4 5.5 9.4a1 1 0 1 1-.6-2c4-1.2 10.5-1 14.6 1.5a1 1 0 0 1-1 1.8z"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.2a10.4 10.4 0 0 0-3.9 20.1c-.1-.5-.2-1.3-.3-2.3a8.6 8.6 0 1 1 8.4 0c-.1 1-.2 1.8-.3 2.3A10.4 10.4 0 0 0 12 1.2zm0 3.7a6.7 6.7 0 0 0-4.6 11.6c.1-.6.4-1.2.8-1.6a5 5 0 1 1 7.6 0c.4.4.7 1 .8 1.6A6.7 6.7 0 0 0 12 4.9zm0 3.9a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4zm0 5.6c-1.5 0-2.6.8-2.6 2 0 .9.5 4.6.8 5.8.2.8 1 1 1.8 1s1.6-.2 1.8-1c.3-1.2.8-4.9.8-5.8 0-1.2-1.1-2-2.6-2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap hdr">
+    <a class="brand" href="/" aria-label="{{showName}} home">{{markSmall}}<span><span class="un">un</span>COMFORTABLE</span></a>
+    <nav aria-label="Main">
+      <a href="#latest">Latest</a>
+      <a href="#about">About</a>
+      <a href="#episodes">Episodes</a>
+      <a href="#hosts">Hosts</a>
+      <a href="#ask">Ask us</a>
+    </nav>
+    <a class="hdr-cta" href="#listen">Listen</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="latest" aria-labelledby="show-title">
+  <div class="blob b1" aria-hidden="true"></div>
+  <div class="blob b2" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy hero-head">
+      <p class="eyebrow">{{hero.eyebrow}}</p>
+      <h1 id="show-title" class="wordmark" aria-label="{{showName}}">
+        <span class="wm-un" aria-hidden="true">un</span><span class="wm-big" aria-hidden="true">{{wordmarkLetters}}</span>
+      </h1>
+      <p class="subtitle">{{subtitle}}</p>
+    </div>
+    <div class="hero-ep">
+      <div class="neon" aria-hidden="true">{{markNeon}}</div>
+      <div class="sticker" aria-hidden="true"><svg viewBox="0 0 140 140"><defs><path id="stk" d="M70,70 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs><text><textPath href="#stk">{{stickerLoop}}</textPath></text></svg><span>&#9786;</span></div>
+      <div class="latest" data-latest aria-live="polite">{{latest}}</div>
+      <noscript><p class="nojs">See the newest episode on <a href="{{youtube}}">YouTube</a>.</p></noscript>
+    </div>
+    <div class="hero-copy hero-body">
+      <p class="tagline">{{hero.tagline}}</p>
+      <p class="intro">{{hero.intro}}</p>
+      <div class="listen-row" aria-label="{{hero.listenLabel}}">
+        <span class="listen-label">{{hero.listenLabel}}</span>
+        {{listenButtons}}
+      </div>
+      <p class="count" data-count>{{count}}</p>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-label="Questions we've asked">
+  <div class="ticker-track">{{ticker}}</div>
+</div>
+
+<section class="mission" id="about" aria-labelledby="mission-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">{{mission.eyebrow}}</p>
+    <h2 id="mission-h" class="statement reveal">{{mission.statement}}</h2>
+    <p class="mission-text reveal">{{mission.text}}</p>
+  </div>
+</section>
+
+<section class="directions" aria-labelledby="dir-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{{directions.eyebrow}}</p>
+      <h2 id="dir-h">{{directions.heading}}</h2>
+      <p>{{directions.text}}</p>
+    </div>
+    <div class="dir-grid">{{directionCards}}</div>
+  </div>
+</section>
+
+<section class="episodes" id="episodes" aria-labelledby="eps-h">
+  <div class="wrap">
+    <div class="sec-head row reveal">
+      <div>
+        <p class="eyebrow">{{episodes.eyebrow}}</p>
+        <h2 id="eps-h">{{episodes.heading}}</h2>
+        <p>{{episodes.text}}</p>
+      </div>
+      <a class="btn ghost" href="{{youtube}}" target="_blank" rel="noopener">{{episodes.buttonLabel}} <svg class="i"><use href="#i-arrow"/></svg></a>
+    </div>
+    <ul class="ep-grid" data-grid data-count="{{episodes.count}}">{{grid}}</ul>
+  </div>
+</section>
+
+<section class="hosts" id="hosts" aria-labelledby="hosts-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{{hosts.eyebrow}}</p>
+      <h2 id="hosts-h">{{hosts.heading}}</h2>
+      <p>{{hosts.text}}</p>
+    </div>
+    {{hostCards}}
+  </div>
+</section>
+
+<section class="ask" id="ask" aria-labelledby="ask-h">
+  <div class="wrap ask-grid">
+    <div class="ask-copy reveal">
+      <p class="eyebrow">{{ask.eyebrow}}</p>
+      <h2 id="ask-h">{{ask.heading}}</h2>
+      <p>{{ask.text}}</p>
+    </div>
+    <form class="ask-form reveal" name="question" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company">
+      <input type="hidden" name="form-name" value="question">
+      <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+      <label class="field"><span>{{ask.questionLabel}}</span><textarea name="question" rows="4" required maxlength="2000" placeholder="{{ask.questionPlaceholder}}"></textarea></label>
+      <div class="two">
+        <label class="field"><span>{{ask.nameLabel}}</span><input name="name" autocomplete="given-name" maxlength="80"></label>
+        <label class="field"><span>{{ask.emailLabel}}</span><input name="email" type="email" autocomplete="email" maxlength="200"></label>
+      </div>
+      <label class="check"><input type="checkbox" name="anonymous" value="yes"> <span>{{ask.anonymousLabel}}</span></label>
+      <button class="btn big" type="submit">{{ask.buttonLabel}} <svg class="i"><use href="#i-arrow"/></svg></button>
+      <p class="fine">{{ask.privacyNote}}</p>
+      <div class="ask-thanks" hidden tabindex="-1"><h3>{{ask.thanksHeading}}</h3><p>{{ask.thanksText}}</p></div>
+    </form>
+  </div>
+</section>
+
+<section class="listen" id="listen" aria-labelledby="listen-h">
+  <div class="big-marquee" aria-hidden="true"><div>{{bigMarquee}}</div></div>
+  <div class="wrap">
+    <h2 id="listen-h" class="reveal">{{listen.heading}}</h2>
+    <p class="reveal">{{listen.text}}</p>
+    <div class="listen-big reveal">{{listenBig}}</div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap ft">
+    <a class="brand" href="/">{{markSmall}}<span><span class="un">un</span>COMFORTABLE</span></a>
+    <p>{{footerText}}</p>
+    <p class="ft-links"><a href="{{churchUrl}}" target="_blank" rel="noopener">{{churchName}}</a><a href="{{instagram}}" target="_blank" rel="noopener">Instagram</a></p>
+  </div>
+</footer>
+
+<div class="meter" aria-hidden="true">
+  <span class="meter-label">Comfort level</span>
+  <span class="meter-bar"><span class="meter-fill"></span></span>
+  <span class="meter-state">Cozy</span>
+</div>
+
+<dialog class="player" aria-label="Episode player">
+  <button class="close" type="button" aria-label="Close"><svg class="i"><use href="#i-x"/></svg></button>
+  <div class="frame"></div>
+</dialog>
+
+<script type="application/json" id="cfg">{{config}}</script>
+<script src="/site.js?v={{version}}" defer></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+# Pages CMS configuration for uncomfy.org (unCOMFORTABLE podcast)
+# Staff edit at https://app.pagescms.org. Saving commits to GitHub,
+# and Netlify rebuilds and republishes the site in about a minute.
+#
+# Text fields accept **bold**, *italic*, and [link text](https://...).
+#
+# Episodes are NOT edited here. The newest episode, the episode cards,
+# and the "322 episodes and counting" number all come from the YouTube
+# playlist automatically. Upload to the playlist and the site updates itself.
+
+settings:
+  commit:
+    identity: user   # record the staff member's name on each saved change
+
+media:
+  input: images
+  output: /images
+  rename: safe
+  extensions: [jpg, jpeg, png, webp]
+
+components:
+  color:
+    type: select
+    options:
+      values: [Teal, Sun, Coral, Orange, Blue, Plum, Pink, Mint, Cream, Navy]
+
+content:
+  # ---------------------------------------------------------------
+  - name: site
+    label: "1. Whole site: name, links, search results"
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - {name: showName, label: Show name, type: string, description: "Not shown as text on the page (the logo is fixed). Used for the browser tab, link previews, and Google."}
+      - {name: subtitle, label: Show subtitle, type: string, description: "The spaced-out all-caps line under the big unCOMFORTABLE logo at the top."}
+      - {name: seoTitle, label: Browser tab and Google title, type: string, description: "Not shown on the page. The title in the browser tab, Google results, and link previews."}
+      - {name: seoDescription, label: Google and link preview description, type: text, description: "Not shown on the page. The short description under the title in Google and in text or social link previews."}
+      - {name: youtube, label: YouTube playlist link, type: string, description: "Paste the full playlist link. Powers the YouTube buttons AND tells the site where to find new episodes. Only change this if the show moves to a new playlist."}
+      - {name: spotify, label: Spotify link, type: string, description: "The Spotify buttons at the top and bottom of the page. Leave blank to hide them."}
+      - {name: apple, label: Apple Podcasts link, type: string, description: "The Apple Podcasts buttons at the top and bottom of the page. Leave blank to hide them."}
+      - {name: instagram, label: Instagram link, type: string, description: "The Instagram link at the bottom right of the footer."}
+      - {name: churchName, label: Church name, type: string, description: "The church link at the bottom right of the footer."}
+      - {name: churchUrl, label: Church website, type: string, description: "Where the church link in the footer goes."}
+      - {name: footerText, label: Footer sentence, type: string, description: "The sentence next to the logo in the footer at the very bottom."}
+
+  # ---------------------------------------------------------------
+  - name: hero
+    label: "2. Top of page"
+    type: file
+    path: content/hero.json
+    format: json
+    fields:
+      - {name: eyebrow, label: Small label, type: string, description: "The small yellow all-caps line above the big unCOMFORTABLE logo."}
+      - {name: tagline, label: Tagline, type: string, description: "The large italic line under the subtitle."}
+      - {name: intro, label: Intro sentence, type: text, description: "The paragraph under the italic tagline."}
+      - {name: listenLabel, label: Listen label, type: string, description: "The small gray all-caps word above the YouTube, Spotify, and Apple buttons."}
+      - {name: stickerText, label: Spinning sticker text, type: string, description: "The words that spin around the yellow smiley sticker on the corner of the newest episode. Keep it short, about 20 letters."}
+
+  # ---------------------------------------------------------------
+  - name: latest
+    label: "3. Newest episode card"
+    type: file
+    path: content/latest.json
+    format: json
+    fields:
+      - {name: label, label: Card label, type: string, description: "The small red all-caps line above the newest episode's title, like Latest episode."}
+      - {name: newLabel, label: Brand-new label, type: string, description: "Replaces the card label, and spins on the red badge, while the episode is brand new."}
+      - {name: newDays, label: Days an episode counts as brand new, type: number, description: "Not shown on the page. How many days after release the red badge and brand-new label stay up."}
+      - {name: playLabel, label: Play button text, type: string, description: "The dark button on the episode thumbnail."}
+      - {name: countText, label: Episode count wording, type: string, description: "The words after the yellow number under the listen buttons. The number itself is counted automatically from YouTube."}
+
+  # ---------------------------------------------------------------
+  - name: questions
+    label: "4. Scrolling questions strip"
+    type: file
+    path: content/questions.json
+    format: json
+    fields:
+      - name: questions
+        label: Questions
+        type: string
+        list: true
+        description: "The questions scrolling across the teal strip under the top section. One per item. Short questions work best."
+
+  # ---------------------------------------------------------------
+  - name: mission
+    label: "5. Why we do this"
+    type: file
+    path: content/mission.json
+    format: json
+    fields:
+      - {name: eyebrow, label: Small label, type: string, description: "The small red all-caps line above the mission statement."}
+      - {name: statement, label: Mission statement, type: text, description: "The big serif mission statement on the cream background. Wrap words in *stars* to make them blue italic."}
+      - {name: text, label: Supporting sentence, type: text, description: "The smaller paragraph under the mission statement."}
+
+  # ---------------------------------------------------------------
+  - name: directions
+    label: "6. Both directions"
+    type: file
+    path: content/directions.json
+    format: json
+    fields:
+      - {name: eyebrow, label: Small label, type: string, description: "The small teal all-caps line above the heading on the dark background."}
+      - {name: heading, label: Heading, type: string, description: "The big white heading."}
+      - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading."}
+      - name: cards
+        label: Cards
+        type: object
+        list: {min: 2, max: 2}
+        description: "The two tilted colored cards. The first sits on the left, the second on the right."
+        fields:
+          - {name: kicker, label: Small label, type: string, description: "The tiny all-caps words at the top of the card."}
+          - {name: title, label: Card title, type: string, description: "The big bold words on the card."}
+          - {name: text, label: Card sentence, type: text, description: "The sentence under the card title."}
+          - {name: color, label: Card color, component: color, description: "The card's background color."}
+
+  # ---------------------------------------------------------------
+  - name: episodes
+    label: "7. More episodes"
+    type: file
+    path: content/episodes.json
+    format: json
+    fields:
+      - {name: eyebrow, label: Small label, type: string, description: "The small blue all-caps line above the heading. The episode cards fill in from YouTube automatically."}
+      - {name: heading, label: Heading, type: string, description: "The big navy heading above the episode cards."}
+      - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading."}
+      - {name: buttonLabel, label: Button text, type: string, description: "The outlined button to the right of the heading. It opens the YouTube playlist."}
+      - name: count
+        label: How many episode cards
+        type: select
+        description: "How many recent episodes show as cards, after the newest one at the top."
+        options:
+          values: ["3", "6", "9", "12"]
+
+  # ---------------------------------------------------------------
+  - name: hosts
+    label: "8. Hosts photo"
+    type: file
+    path: content/hosts.json
+    format: json
+    fields:
+      - {name: eyebrow, label: Small label, type: string, description: "The small red all-caps line above the heading."}
+      - {name: heading, label: Heading, type: string, description: "The big navy heading above the hosts photo."}
+      - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading."}
+      - {name: photo, label: Hosts photo, type: image, description: "The wide photo of the hosts. Use a wide (landscape) photo with the hosts left, middle, and right. Keep it under 1 MB."}
+      - {name: photoAlt, label: Photo description, type: string, description: "Not shown on the page. Describes the photo for people using screen readers."}
+      - name: hosts
+        label: Hosts
+        type: object
+        list: {min: 1, max: 3}
+        description: "The 'Hello, I'm' name stickers on the photo."
+        fields:
+          - {name: name, label: Name, type: string, description: "The big italic name on the sticker."}
+          - {name: role, label: Role, type: string, description: "The tiny all-caps word under the name on the sticker, like Host."}
+          - name: spot
+            label: Where they sit
+            type: select
+            description: "Which person in the photo the sticker goes on."
+            options:
+              values: [Left, Middle, Right]
+          - {name: color, label: Sticker color, component: color, description: "The sticker's color."}
+          - {name: bio, label: Short bio, type: text, description: "Optional. When filled in, a small card with this bio appears under the photo. Leave blank to show only the sticker."}
+
+  # ---------------------------------------------------------------
+  - name: ask
+    label: "9. Ask us a question"
+    type: file
+    path: content/ask.json
+    format: json
+    fields:
+      - {name: eyebrow, label: Small label, type: string, description: "The small all-caps line above the heading on the orange background."}
+      - {name: heading, label: Heading, type: string, description: "The big navy heading on the orange background."}
+      - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading."}
+      - {name: questionLabel, label: Question box label, type: string, description: "The bold label above the big question box in the form."}
+      - {name: questionPlaceholder, label: Question box hint, type: string, description: "The light gray hint inside the empty question box."}
+      - {name: nameLabel, label: Name box label, type: string, description: "The label above the name box."}
+      - {name: emailLabel, label: Email box label, type: string, description: "The label above the email box."}
+      - {name: anonymousLabel, label: Anonymous checkbox text, type: string, description: "The words next to the checkbox."}
+      - {name: buttonLabel, label: Send button text, type: string, description: "The yellow button at the bottom of the form."}
+      - {name: privacyNote, label: Privacy note, type: string, description: "The small gray line under the send button."}
+      - {name: thanksHeading, label: Thank-you heading, type: string, description: "The big line that replaces the form after someone sends a question."}
+      - {name: thanksText, label: Thank-you sentence, type: text, description: "The sentence under the thank-you heading."}
+
+  # ---------------------------------------------------------------
+  - name: listen
+    label: "10. Bottom: listen everywhere"
+    type: file
+    path: content/listen.json
+    format: json
+    fields:
+      - {name: heading, label: Heading, type: string, description: "The big white heading under the giant scrolling words near the bottom."}
+      - {name: text, label: Sentence, type: text, description: "The sentence above the three big YouTube, Spotify, and Apple Podcasts buttons."}

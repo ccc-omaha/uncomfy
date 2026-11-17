@@ -1,0 +1,36 @@
+[build]
+  publish = "."
+  command = "node build.js"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# short, sayable links
+[[redirects]]
+  from = "/youtube"
+  to = "https://www.youtube.com/playlist?list=PLzdVE7HNsqM9KTuzDL7BvpGlliUYfjM4-"
+  status = 302
+[[redirects]]
+  from = "/spotify"
+  to = "https://open.spotify.com/show/0Uh6E7WFwb6JsDJPsVVBFb"
+  status = 302
+[[redirects]]
+  from = "/apple"
+  to = "https://podcasts.apple.com/us/podcast/uncomfortable/id1471179706"
+  status = 302
+[[redirects]]
+  from = "/ask"
+  to = "/#ask"
+  status = 302

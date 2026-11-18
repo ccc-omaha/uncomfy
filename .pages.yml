@@ -178,6 +178,9 @@ content:
             options:
               values: [Left, Middle, Right]
           - {name: color, label: Sticker color, component: color, description: "The sticker's color."}
+          - {name: instagram, label: Instagram, type: string, description: "An icon link at the bottom of their bio bubble. Type the handle like @etwendt, or paste their profile link. Leave blank to hide the icon."}
+          - {name: tiktok, label: TikTok, type: string, description: "An icon link at the bottom of their bio bubble. Type the handle like @etwendt, or paste their profile link. Leave blank to hide the icon."}
+          - {name: x, label: X (Twitter), type: string, description: "An icon link at the bottom of their bio bubble. Type the handle like @ericwendt, or paste their profile link. Leave blank to hide the icon."}
           - {name: bio, label: Short bio, type: text, description: "Optional. Pops out of the host's name sticker in a speech bubble when someone hovers over or taps it (on phones it opens in a card under the photo). Leave blank and the sticker does nothing."}
 
   # ---------------------------------------------------------------

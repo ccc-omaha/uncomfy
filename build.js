@@ -105,6 +105,22 @@ const pic = (p, alt, w, h) => {
   return `<picture>${has ? `<source type="image/webp" srcset="${esc(webp)}">` : ''}<img src="${esc(s)}" alt="${esc(alt)}" width="${w}" height="${h}" loading="lazy" decoding="async"></picture>`;
 };
 const hostList = (H.hosts || []).filter(h => h.name);
+// a handle (@etwendt) or a pasted profile link -> a clean profile link, tracking codes removed
+const SOCIAL = [['instagram', 'Instagram', 'ig', h => `https://www.instagram.com/${h}/`], ['tiktok', 'TikTok', 'tiktok', h => `https://www.tiktok.com/@${h}`], ['x', 'X', 'x', h => `https://x.com/${h}`]];
+const profile = (v, make) => {
+  const s = String(v || '').trim();
+  if (!s) return '';
+  if (/^https?:\/\//i.test(s)) return s.split(/[?#]/)[0];
+  const handle = s.replace(/^@/, '').replace(/[^\w.]/g, '');
+  return handle ? make(handle) : '';
+};
+const socials = h => {
+  const links = SOCIAL.map(([k, label, ic, make]) => {
+    const u = profile(h[k], make);
+    return u ? `<a href="${esc(u)}" target="_blank" rel="noopener" aria-label="${esc(h.name)} on ${label}"><svg class="i" aria-hidden="true"><use href="#i-${ic}"/></svg></a>` : '';
+  }).join('');
+  return links ? `<span class="bubble-social">${links}</span>` : '';
+};
 // name stickers on the photo; a host with a bio gets a speech bubble that pops on hover or tap
 const slug = t => String(t).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const hostTags = hostList.map((h, i) => {
@@ -112,7 +128,7 @@ const hostTags = hostList.map((h, i) => {
   const face = `<small>Hello, I'm</small><b>${esc(h.name)}</b>${h.role ? `<em>${esc(h.role)}</em>` : ''}`;
   const id = 'bio-' + slug(h.name);
   const sticker = h.bio
-    ? `<button class="tag-btn" type="button" aria-expanded="false" aria-controls="${id}" aria-label="${esc(h.name)}: show bio">${face}</button><span class="bubble ${color(h.color)}" id="${id}" role="note"><span class="bubble-name">${esc(h.name)}</span><span class="bubble-text">${fmt(h.bio)}</span></span>`
+    ? `<button class="tag-btn" type="button" aria-expanded="false" aria-controls="${id}" aria-label="${esc(h.name)}: show bio">${face}</button><span class="bubble ${color(h.color)}" id="${id}" role="note"><span class="bubble-name">${esc(h.name)}</span><span class="bubble-text">${fmt(h.bio)}</span>${socials(h)}</span>`
     : `<span class="tag-btn">${face}</span>`;
   return `<span class="tag ${color(h.color)} at-${slug(h.spot || 'Middle')}${h.bio ? ' has-bio' : ''}" style="--x:${x}%;--y:${y}%;--d:${300 + i * 180}ms;--t:${[-6, 4, -3][i % 3]}deg">${sticker}</span>`;
 }).join('');

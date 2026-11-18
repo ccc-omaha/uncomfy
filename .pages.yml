@@ -96,7 +96,7 @@ content:
     fields:
       - {name: eyebrow, label: Small label, type: string, description: "The small red all-caps line above the mission statement."}
       - {name: statement, label: Mission statement, type: text, description: "The big serif mission statement on the cream background. Wrap words in *stars* to make them blue italic."}
-      - {name: text, label: Supporting sentence, type: text, description: "The smaller paragraph under the mission statement."}
+      - {name: text, label: Supporting sentence, type: text, description: "The smaller paragraph under the mission statement. For italics, put one star (asterisk) on each side of the words. For bold, put two stars on each side."}
 
   # ---------------------------------------------------------------
   - name: directions

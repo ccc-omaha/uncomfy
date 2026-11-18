@@ -97,7 +97,7 @@ const directionCards = (c.directions.cards || []).map((x, i) => `
       </article>`).join('');
 
 const H = c.hosts;
-const SPOT = { Left: [14, 66], Middle: [50, 64], Right: [86, 64] };
+const SPOT = { Left: [17, 60], Middle: [51, 59], Right: [85, 60] };
 const pic = (p, alt, w, h) => {
   const s = '/' + String(p || '').replace(/^\//, '');
   const webp = s.replace(/\.(jpe?g|png)$/i, '.webp');

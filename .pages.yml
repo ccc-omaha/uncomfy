@@ -57,7 +57,7 @@ content:
     fields:
       - {name: eyebrow, label: Small label, type: string, description: "The small yellow all-caps line above the big unCOMFORTABLE logo."}
       - {name: tagline, label: Tagline, type: string, description: "The large italic line under the subtitle."}
-      - {name: intro, label: Intro sentence, type: text, description: "The paragraph under the italic tagline."}
+      - {name: intro, label: Intro sentence, type: text, description: "The paragraph under the italic tagline. *One star* on each side makes italics, **two stars** makes bold."}
       - {name: listenLabel, label: Listen label, type: string, description: "The small gray all-caps word above the YouTube, Spotify, and Apple buttons."}
       - {name: stickerText, label: Spinning sticker text, type: string, description: "The words that spin around the yellow smiley sticker on the corner of the newest episode. Keep it short, about 20 letters."}
 
@@ -107,7 +107,7 @@ content:
     fields:
       - {name: eyebrow, label: Small label, type: string, description: "The small teal all-caps line above the heading on the dark background."}
       - {name: heading, label: Heading, type: string, description: "The big white heading."}
-      - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading."}
+      - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading. *One star* on each side makes italics, **two stars** makes bold."}
       - name: cards
         label: Cards
         type: object
@@ -116,7 +116,7 @@ content:
         fields:
           - {name: kicker, label: Small label, type: string, description: "The tiny all-caps words at the top of the card."}
           - {name: title, label: Card title, type: string, description: "The big bold words on the card."}
-          - {name: text, label: Card sentence, type: text, description: "The sentence under the card title."}
+          - {name: text, label: Card sentence, type: text, description: "The sentence under the card title. *One star* on each side makes italics, **two stars** makes bold."}
           - {name: color, label: Card color, component: color, description: "The card's background color."}
 
   # ---------------------------------------------------------------
@@ -128,7 +128,7 @@ content:
     fields:
       - {name: eyebrow, label: Small label, type: string, description: "The small blue all-caps line above the heading. The episode cards fill in from YouTube automatically."}
       - {name: heading, label: Heading, type: string, description: "The big navy heading above the episode cards."}
-      - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading."}
+      - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading. *One star* on each side makes italics, **two stars** makes bold."}
       - {name: buttonLabel, label: Button text, type: string, description: "The outlined button to the right of the heading. It opens the YouTube playlist."}
       - name: count
         label: How many episode cards
@@ -159,7 +159,7 @@ content:
     fields:
       - {name: eyebrow, label: Small label, type: string, description: "The small red all-caps line above the heading."}
       - {name: heading, label: Heading, type: string, description: "The big navy heading above the hosts photo."}
-      - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading."}
+      - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading. *One star* on each side makes italics, **two stars** makes bold."}
       - {name: photo, label: Hosts photo, type: image, description: "The wide photo of the hosts. Use a wide (landscape) photo with the hosts left, middle, and right. Keep it under 1 MB."}
       - {name: photoAlt, label: Photo description, type: string, description: "Not shown on the page. Describes the photo for people using screen readers."}
       - {name: hint, label: Name tag hint, type: string, description: "The small line under the hosts photo that tells people to tap a name tag. Only shows when at least one host has a bio."}
@@ -181,7 +181,7 @@ content:
           - {name: instagram, label: Instagram, type: string, description: "An icon link at the bottom of their bio bubble. Type the handle like @etwendt, or paste their profile link. Leave blank to hide the icon."}
           - {name: tiktok, label: TikTok, type: string, description: "An icon link at the bottom of their bio bubble. Type the handle like @etwendt, or paste their profile link. Leave blank to hide the icon."}
           - {name: x, label: X (Twitter), type: string, description: "An icon link at the bottom of their bio bubble. Type the handle like @ericwendt, or paste their profile link. Leave blank to hide the icon."}
-          - {name: bio, label: Short bio, type: text, description: "Optional. Pops out of the host's name sticker in a speech bubble when someone hovers over or taps it (on phones it opens in a card under the photo). Leave blank and the sticker does nothing."}
+          - {name: bio, label: Short bio, type: text, description: "Optional. Pops out of the host's name sticker in a speech bubble when someone hovers over or taps it (on phones it opens in a card under the photo). Leave blank and the sticker does nothing. *One star* on each side makes italics, **two stars** makes bold."}
 
   # ---------------------------------------------------------------
   - name: ask
@@ -192,7 +192,7 @@ content:
     fields:
       - {name: eyebrow, label: Small label, type: string, description: "The small all-caps line above the heading on the orange background."}
       - {name: heading, label: Heading, type: string, description: "The big navy heading on the orange background."}
-      - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading."}
+      - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading. *One star* on each side makes italics, **two stars** makes bold."}
       - {name: voicemailText, label: Voicemail line, type: string, description: "The line with the phone icon under the intro paragraph. The voicemail number from section 1 is added at the end."}
       - {name: questionLabel, label: Question box label, type: string, description: "The bold label above the big question box in the form."}
       - {name: questionPlaceholder, label: Question box hint, type: string, description: "The light gray hint inside the empty question box."}
@@ -202,7 +202,7 @@ content:
       - {name: buttonLabel, label: Send button text, type: string, description: "The yellow button at the bottom of the form."}
       - {name: privacyNote, label: Privacy note, type: string, description: "The small gray line under the send button."}
       - {name: thanksHeading, label: Thank-you heading, type: string, description: "The big line that replaces the form after someone sends a question."}
-      - {name: thanksText, label: Thank-you sentence, type: text, description: "The sentence under the thank-you heading."}
+      - {name: thanksText, label: Thank-you sentence, type: text, description: "The sentence under the thank-you heading. *One star* on each side makes italics, **two stars** makes bold."}
 
   # ---------------------------------------------------------------
   - name: listen
@@ -212,10 +212,10 @@ content:
     format: json
     fields:
       - {name: heading, label: Heading, type: string, description: "The big white heading under the giant scrolling words near the bottom."}
-      - {name: text, label: Sentence, type: text, description: "The sentence above the three big YouTube, Spotify, and Apple Podcasts buttons."}
+      - {name: text, label: Sentence, type: text, description: "The sentence above the three big YouTube, Spotify, and Apple Podcasts buttons. *One star* on each side makes italics, **two stars** makes bold."}
       - {name: voicemailKicker, label: Voicemail card label, type: string, description: "The small all-caps line on the aqua card above the phone number."}
-      - {name: voicemailText, label: Voicemail card sentence, type: text, description: "The sentence under the phone number on the aqua card."}
+      - {name: voicemailText, label: Voicemail card sentence, type: text, description: "The sentence under the phone number on the aqua card. *One star* on each side makes italics, **two stars** makes bold."}
       - {name: followKicker, label: Follow card label, type: string, description: "The small all-caps line on the pink card above the social handle."}
-      - {name: followText, label: Follow card sentence, type: text, description: "The sentence under the handle on the pink card."}
+      - {name: followText, label: Follow card sentence, type: text, description: "The sentence under the handle on the pink card. *One star* on each side makes italics, **two stars** makes bold."}
       - {name: reviewKicker, label: Review card label, type: string, description: "The small all-caps line on the orange card under the stars."}
-      - {name: reviewText, label: Review card sentence, type: text, description: "The sentence on the orange card above the Apple Podcasts and Spotify buttons."}
+      - {name: reviewText, label: Review card sentence, type: text, description: "The sentence on the orange card above the Apple Podcasts and Spotify buttons. *One star* on each side makes italics, **two stars** makes bold."}

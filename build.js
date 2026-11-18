@@ -106,7 +106,7 @@ const pic = (p, alt, w, h) => {
 };
 const hostList = (H.hosts || []).filter(h => h.name);
 // a handle (@etwendt) or a pasted profile link -> a clean profile link, tracking codes removed
-const SOCIAL = [['instagram', 'Instagram', 'ig', h => `https://www.instagram.com/${h}/`], ['tiktok', 'TikTok', 'tiktok', h => `https://www.tiktok.com/@${h}`], ['x', 'X', 'x', h => `https://x.com/${h}`]];
+const SOCIAL = [['instagram', 'Instagram', 'ig', h => `https://www.instagram.com/${h}/`], ['tiktok', 'TikTok', 'tiktok', h => `https://www.tiktok.com/@${h}`], ['x', 'X', 'xlogo', h => `https://x.com/${h}`]];
 const profile = (v, make) => {
   const s = String(v || '').trim();
   if (!s) return '';

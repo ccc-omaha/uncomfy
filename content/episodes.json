@@ -1,9 +1,9 @@
 {
   "eyebrow": "Back catalog",
   "heading": "More conversations",
-  "text": "Catch up on recent episodes, or search every conversation we've had.",
-  "count": "6",
+  "text": "Catch up on recent episodes, or search every conversation we’ve had.",
   "buttonLabel": "See every episode",
+  "count": "6",
   "searchLabel": "Search every episode",
   "searchPlaceholder": "Try a topic, a guest, or an episode number",
   "topicsLabel": "Popular topics",
@@ -41,6 +41,6 @@
       "words": "doubt, doubts, deconstruction, deconstruct, church hurt, religious trauma, spiritual abuse"
     }
   ],
-  "noResults": "We haven't covered that yet. Want us to?",
+  "noResults": "We haven’t covered that yet. Want us to?",
   "suggestLabel": "Suggest it as a topic"
 }

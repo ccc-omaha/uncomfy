@@ -4,26 +4,27 @@
   "text": "Three hosts, a lot of honest questions, and guests who are willing to go there.",
   "photo": "images/studio.jpg",
   "photoAlt": "The three unCOMFORTABLE hosts talking at the studio table under the neon logo",
+  "hint": "Tap a name tag to meet the hosts",
   "hosts": [
     {
       "name": "Eric",
       "role": "Host",
       "spot": "Left",
-      "bio": "",
+      "bio": "Eric is the Director of Communications at Christ Community Church. He’s a pop culture obsessive, a gamer, and a bit of a contrarian. A self-described futurist, he’s usually first in line to try new tech and always up for talking through a big idea.",
       "color": "Orange"
     },
     {
       "name": "Alex",
       "role": "Host",
       "spot": "Middle",
-      "bio": "",
+      "bio": "Alex is the Director of Online Discipleship at Christ Community Church. When he’s away from the camera, you’ll usually find him on the basketball court or figuring out what to make with his 3D printer next.",
       "color": "Aqua"
     },
     {
       "name": "Jess",
       "role": "Host",
       "spot": "Right",
-      "bio": "",
+      "bio": "Jess is a licensed counselor at CityCare Counseling. Her watchlist runs from Hallmark movies to true crime, and she has a knack for knowing when someone could use a word of encouragement.",
       "color": "Magenta"
     }
   ]

@@ -378,6 +378,38 @@
     } catch (e) {}
   }
 
+  // ---------- hosts: tap a name sticker to read their bio ----------
+  var studioEl = document.querySelector('.studio'), pop = document.querySelector('.bio-pop');
+  var hostTags = studioEl ? [].slice.call(studioEl.querySelectorAll('.tag.has-bio')) : [];
+  if (hostTags.length) {
+    var small = window.matchMedia('(max-width: 900px)');
+    var closeBios = function (keep) {
+      hostTags.forEach(function (t) { if (t !== keep) { t.classList.remove('open'); t.querySelector('.tag-btn').setAttribute('aria-expanded', 'false'); } });
+      if (!keep && pop) pop.hidden = true;
+    };
+    var toggleBio = function (t) {
+      var open = !t.classList.contains('open');
+      closeBios(t);
+      t.classList.toggle('open', open);
+      t.querySelector('.tag-btn').setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (!pop) return;
+      if (open && small.matches) {
+        var b = t.querySelector('.bubble');
+        pop.className = 'bio-pop ' + ((b.className.match(/c-[a-z]+/) || [''])[0]);
+        pop.style.setProperty('--x', t.style.getPropertyValue('--x'));
+        pop.innerHTML = b.innerHTML;
+        pop.hidden = false;
+        void pop.offsetWidth; pop.classList.add('pop');
+      } else pop.hidden = true;
+    };
+    hostTags.forEach(function (t) {
+      t.querySelector('.tag-btn').addEventListener('click', function (e) { e.stopPropagation(); toggleBio(t); });
+    });
+    document.addEventListener('click', function (e) { if (!e.target.closest('.tag.has-bio') && !e.target.closest('.bio-pop')) closeBios(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeBios(); });
+    if (small.addEventListener) small.addEventListener('change', function () { closeBios(); });
+  }
+
   // ---------- click to play (keeps YouTube off the page until asked) ----------
   var dlg = document.querySelector('.player');
   document.addEventListener('click', function (e) {

@@ -162,6 +162,7 @@ content:
       - {name: text, label: Intro sentence, type: text, description: "The paragraph under the heading."}
       - {name: photo, label: Hosts photo, type: image, description: "The wide photo of the hosts. Use a wide (landscape) photo with the hosts left, middle, and right. Keep it under 1 MB."}
       - {name: photoAlt, label: Photo description, type: string, description: "Not shown on the page. Describes the photo for people using screen readers."}
+      - {name: hint, label: Name tag hint, type: string, description: "The small line under the hosts photo that tells people to tap a name tag. Only shows when at least one host has a bio."}
       - name: hosts
         label: Hosts
         type: object
@@ -177,7 +178,7 @@ content:
             options:
               values: [Left, Middle, Right]
           - {name: color, label: Sticker color, component: color, description: "The sticker's color."}
-          - {name: bio, label: Short bio, type: text, description: "Optional. When filled in, a small card with this bio appears under the photo. Leave blank to show only the sticker."}
+          - {name: bio, label: Short bio, type: text, description: "Optional. Pops out of the host's name sticker in a speech bubble when someone hovers over or taps it (on phones it opens in a card under the photo). Leave blank and the sticker does nothing."}
 
   # ---------------------------------------------------------------
   - name: ask

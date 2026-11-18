@@ -105,14 +105,21 @@ const pic = (p, alt, w, h) => {
   return `<picture>${has ? `<source type="image/webp" srcset="${esc(webp)}">` : ''}<img src="${esc(s)}" alt="${esc(alt)}" width="${w}" height="${h}" loading="lazy" decoding="async"></picture>`;
 };
 const hostList = (H.hosts || []).filter(h => h.name);
+// name stickers on the photo; a host with a bio gets a speech bubble that pops on hover or tap
+const slug = t => String(t).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const hostTags = hostList.map((h, i) => {
   const [x, y] = SPOT[h.spot] || SPOT.Middle;
-  return `<span class="tag ${color(h.color)}" style="--x:${x}%;--y:${y}%;--d:${300 + i * 180}ms;--t:${[-6, 4, -3][i % 3]}deg"><small>Hello, I'm</small><b>${esc(h.name)}</b>${h.role ? `<em>${esc(h.role)}</em>` : ''}</span>`;
+  const face = `<small>Hello, I'm</small><b>${esc(h.name)}</b>${h.role ? `<em>${esc(h.role)}</em>` : ''}`;
+  const id = 'bio-' + slug(h.name);
+  const sticker = h.bio
+    ? `<button class="tag-btn" type="button" aria-expanded="false" aria-controls="${id}" aria-label="${esc(h.name)}: show bio">${face}</button><span class="bubble ${color(h.color)}" id="${id}" role="note"><span class="bubble-name">${esc(h.name)}</span><span class="bubble-text">${fmt(h.bio)}</span></span>`
+    : `<span class="tag-btn">${face}</span>`;
+  return `<span class="tag ${color(h.color)} at-${slug(h.spot || 'Middle')}${h.bio ? ' has-bio' : ''}" style="--x:${x}%;--y:${y}%;--d:${300 + i * 180}ms;--t:${[-6, 4, -3][i % 3]}deg">${sticker}</span>`;
 }).join('');
+const hasBios = hostList.some(h => h.bio);
 const studio = H.photo ? `<figure class="studio reveal">${pic(H.photo, H.photoAlt, 1600, 896)}${hostTags}</figure>` : '';
-const bios = hostList.filter(h => h.bio).map((h, i) => `
-      <li class="bio ${color(h.color)} reveal" style="--d:${i * 90}ms"><h3>${tie(esc(h.name))}</h3>${h.role ? `<p class="host-role">${esc(h.role)}</p>` : ''}<p>${fmt(h.bio)}</p></li>`).join('');
-const hostCards = studio + (bios ? `<ul class="bios">${bios}</ul>` : '');
+// phones: the photo is too small for bubbles, so the tapped bio opens in this card under it
+const hostCards = studio + (hasBios ? `<div class="bio-pop" aria-live="polite" hidden></div>${H.hint ? `<p class="host-hint"><span aria-hidden="true">&#9758;</span> ${esc(H.hint)}</p>` : ''}` : '');
 
 // the show's spiral mark, one path per ring so each ring can turn on its own
 const RINGS = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/mark.json'), 'utf8'));

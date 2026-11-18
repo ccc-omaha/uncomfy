@@ -1,15 +1,15 @@
 {
   "eyebrow": "Your turn",
   "heading": "Ask us something uncomfortable.",
-  "text": "Got a question you've been afraid to ask at church, or a topic you want us to tackle? Send it. We read every one, and the best ones become episodes.",
+  "text": "Got a question you’ve been afraid to ask at church, or a topic you want us to tackle? Send it. We read every one, and the best ones become episodes.",
+  "voicemailText": "Rather say it out loud? Leave us a voicemail at",
   "questionLabel": "Your question or topic idea",
-  "questionPlaceholder": "The thing you've always wondered, or the conversation you wish Christians were having",
+  "questionPlaceholder": "The thing you’ve always wondered, or the conversation you wish Christians were having",
   "nameLabel": "First name (optional)",
   "emailLabel": "Email (only if you want a reply)",
   "anonymousLabel": "Keep me anonymous if this comes up on the show",
   "buttonLabel": "Send it",
-  "thanksHeading": "Got it. Thank you.",
-  "thanksText": "That took guts. Keep listening, it might show up in a future episode.",
   "privacyNote": "We never share your name or email.",
-  "voicemailText": "Rather say it out loud? Leave us a voicemail at"
+  "thanksHeading": "Got it. Thank you.",
+  "thanksText": "That took guts. Keep listening; it might show up in a future episode."
 }

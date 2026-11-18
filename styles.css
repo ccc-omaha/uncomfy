@@ -14,7 +14,7 @@
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
 html,body{overflow-x:clip}
-body{margin:0;font-family:var(--sans);font-size:18px;line-height:1.55;color:var(--cream);background:var(--navy);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);font-size:18px;line-height:1.55;color:var(--cream);background:var(--navy);-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit}
 h1,h2,h3,h4{margin:0 0 .4em;line-height:1;font-weight:800;letter-spacing:-.02em;text-wrap:balance}
@@ -36,6 +36,8 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 
 /* ---------- header ---------- */
 .site-header{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--navy) 78%,transparent);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid rgba(251,239,218,.08)}
+/* pinned on desktop; scrolls away on phones */
+@media (max-width:760px){.site-header{position:relative}}
 .hdr{display:flex;align-items:center;gap:28px;height:68px}
 .brand{font-weight:900;font-size:22px;letter-spacing:-.03em;text-decoration:none;color:var(--cream);white-space:nowrap}
 .brand .un{color:var(--aqua)}
